@@ -1,10 +1,19 @@
 import '../styles/components/CharacterList.scss';
 import CharacterCard from './CharacterCard';
 
-const CharacterList = () => {
+const CharacterList = (props) => {
+  const characterElements = props.characters.map((character) => {
+    return (
+      <li key={character.id}>
+        <CharacterCard character={character} />
+      </li>
+    );
+  });
   return (
     <div>
-      <CharacterCard />
+      <section>
+        <ul>{characterElements}</ul>
+      </section>
     </div>
   );
 };
