@@ -1,4 +1,5 @@
 import '../styles/components/CharacterCard.scss';
+import DefaultImage from '../images/default_img.jpeg';
 
 const CharacterCard = (props) => {
   const getSpecies = () => {
@@ -12,19 +13,20 @@ const CharacterCard = (props) => {
       return 'Fantasma';
     }
   };
+  const image = props.character.image ? props.character.image : DefaultImage;
   return (
-    <article>
-      <a className='' href='#'>
+    <a className='card' href='#'>
+      <article className='card__article'>
         <img
-          className=''
-          src={props.character.image}
+          className='card__article--img'
+          src={image}
           alt={`Foto de ${props.character.name}`}
           title={`Foto de ${props.character.name}`}
         />
-        <h4 className=''>{props.character.name}</h4>
-        <p className=''>{getSpecies()}</p>
-      </a>
-    </article>
+        <h4 className='card__article--title'>{props.character.name}</h4>
+        <p className='card__article--text'>{getSpecies()}</p>
+      </article>
+    </a>
   );
 };
 export default CharacterCard;

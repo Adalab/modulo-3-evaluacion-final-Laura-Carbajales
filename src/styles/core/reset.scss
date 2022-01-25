@@ -5,18 +5,13 @@ textarea {
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing: content-box;
   margin: 0;
   padding: 0;
-  background-color: gray;
 }
 
 a {
   text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 ul {

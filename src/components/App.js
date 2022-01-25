@@ -2,6 +2,7 @@ import '../styles/App.scss';
 import { useState, useEffect } from 'react';
 import { Route, Switch, useRouteMatch, Link } from 'react-router-dom';
 import getApiData from '../services/charactersApi';
+import Filters from './Filters';
 import CharacterList from './CharacterList';
 import CharacterDetail from './CharacterDetail';
 import Header from './Header';
@@ -30,9 +31,10 @@ const App = () => {
   });
 
   return (
-    <div>
-      <Header handleFilter={handleFilter} filterName={filterName} filterHouse={filterHouse} />
-      <main>
+    <div className='page'>
+      <Header />
+      <main className='page__main'>
+        <Filters handleFilter={handleFilter} filterName={filterName} filterHouse={filterHouse} />
         <CharacterList characters={filteredCharacter} />
         <CharacterDetail />
       </main>
