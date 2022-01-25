@@ -30,13 +30,27 @@ const App = () => {
     return character.name.toLowerCase().includes(filterName.toLowerCase());
   });
 
+  const renderCharacterDetail = (props) => {
+    const routeId = parseInt(props.match.params.id);
+    const foundCharacter = characters.find((character) => character.id === routeId);
+    return <CharacterDetail character={foundCharacter} />;
+  };
+
   return (
     <div className='page'>
       <Header />
       <main className='page__main'>
-        <Filters handleFilter={handleFilter} filterName={filterName} filterHouse={filterHouse} />
-        <CharacterList characters={filteredCharacter} />
-        <CharacterDetail />
+        <Switch>
+          <Route path='/' exact>
+            <Filters
+              handleFilter={handleFilter}
+              filterName={filterName}
+              filterHouse={filterHouse}
+            />
+            <CharacterList characters={filteredCharacter} />
+          </Route>
+          <Route path='/character/:id' render={renderCharacterDetail}></Route>
+        </Switch>
       </main>
       <footer></footer>
     </div>

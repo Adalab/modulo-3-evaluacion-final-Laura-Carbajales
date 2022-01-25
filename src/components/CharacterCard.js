@@ -1,5 +1,6 @@
 import '../styles/components/CharacterCard.scss';
 import DefaultImage from '../images/default_img.jpeg';
+import { Link } from 'react-router-dom';
 
 const CharacterCard = (props) => {
   const getSpecies = () => {
@@ -15,7 +16,7 @@ const CharacterCard = (props) => {
   };
   const image = props.character.image ? props.character.image : DefaultImage;
   return (
-    <a className='card' href='#'>
+    <Link to={`/character/${props.character.id}`} className='card' href='#'>
       <article className='card__article'>
         <img
           className='card__article--img'
@@ -26,7 +27,7 @@ const CharacterCard = (props) => {
         <h4 className='card__article--title'>{props.character.name}</h4>
         <p className='card__article--text'>{getSpecies()}</p>
       </article>
-    </a>
+    </Link>
   );
 };
 export default CharacterCard;
