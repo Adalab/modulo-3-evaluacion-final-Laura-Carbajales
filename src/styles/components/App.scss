@@ -1,5 +1,6 @@
 .page {
   background-color: gray;
+  min-height: 100vh;
   &__main {
     display: flex;
     flex-direction: column;

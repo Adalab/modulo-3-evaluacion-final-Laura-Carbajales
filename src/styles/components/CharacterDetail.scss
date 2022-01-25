@@ -1,0 +1,45 @@
+.detail {
+  &__link {
+    color: white;
+    font-size: 20px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &__article {
+    background-color: rgb(104, 13, 13);
+    width: 500px;
+    height: 300px;
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &--img {
+      width: 200px;
+      height: 300px;
+      object-fit: cover;
+    }
+    &--shield {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      position: absolute;
+      transform: translate(165px, 117px);
+      border: 2px solid white;
+      border-radius: 50%;
+      padding: 5px;
+      background-color: white;
+    }
+    &--container {
+      width: 50%;
+      margin-left: 10px;
+    }
+    &--title {
+      color: white;
+      font-size: 20px;
+    }
+    &--text {
+      color: white;
+    }
+  }
+}
