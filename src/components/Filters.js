@@ -5,9 +5,13 @@ import FilterHouse from './FilterHouse';
 const Filters = (props) => {
   return (
     <section>
-      <form>
-        <FilterName handleFilter={props.handleFilter} filterName={props.filterName} />
-        <FilterHouse />
+      <form className='filters'>
+        <div className='filters__name'>
+          <FilterName handleFilter={props.handleFilter} filterName={props.filterName} />
+        </div>
+        <div className='filters__house'>
+          <FilterHouse handleFilter={props.handleFilter} filterHouse={props.filterHouse} />
+        </div>
       </form>
     </section>
   );

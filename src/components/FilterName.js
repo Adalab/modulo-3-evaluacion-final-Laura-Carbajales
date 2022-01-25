@@ -1,3 +1,5 @@
+import '../styles/components/FilterName.scss';
+
 const FilterName = (props) => {
   const handleChange = (ev) => {
     props.handleFilter({
@@ -7,11 +9,11 @@ const FilterName = (props) => {
   };
   return (
     <>
-      <label className='' htmlFor='name'>
+      <label className='labelName' htmlFor='name'>
         Filtrar por nombre:
       </label>
       <input
-        className=''
+        className='inputName'
         type='text'
         name='name'
         id='name'

@@ -1,19 +1,18 @@
 html,
 textarea {
   font-size: 16px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
-    'Helvetica Neue', sans-serif;
+  font-family: sans-serif;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  background-color: gray;
 }
 
 a {
   text-decoration: none;
-  color: #1d9bf0;
 }
 
 a:hover {
