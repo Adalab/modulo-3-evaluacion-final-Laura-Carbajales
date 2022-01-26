@@ -1,6 +1,7 @@
 import '../styles/components/Filters.scss';
 import FilterName from './FilterName';
 import FilterHouse from './FilterHouse';
+import FilterAncestry from './FilterAncestry';
 
 const Filters = (props) => {
   return (
@@ -11,6 +12,13 @@ const Filters = (props) => {
         </div>
         <div className='filters__house'>
           <FilterHouse handleFilter={props.handleFilter} filterHouse={props.filterHouse} />
+        </div>
+        <div className='filters__ancestry'>
+          <FilterAncestry
+            handleFilter={props.handleFilter}
+            ancestry={props.ancestry}
+            filterAncestry={props.filterAncestry}
+          />
         </div>
       </form>
     </section>

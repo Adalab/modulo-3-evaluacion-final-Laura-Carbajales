@@ -12,6 +12,7 @@ const getApiData = (filterHouse) => {
           house: character.house,
           image: character.image,
           alternate: character.alternate_names,
+          ancestry: character.ancestry,
         };
       });
       return cleanData;

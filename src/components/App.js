@@ -12,6 +12,7 @@ const App = () => {
   const [characters, setcharacters] = useState([]);
   const [filterName, setFilterName] = useState('');
   const [filterHouse, setFilterHouse] = useState('gryffindor');
+  const [filterAncestry, setFilterAncestry] = useState([]);
 
   useEffect(() => {
     getApiData(filterHouse).then((charactersData) => {
@@ -34,12 +35,34 @@ const App = () => {
       setFilterName(data.value);
     } else if (data.key === 'house') {
       setFilterHouse(data.value);
+    } else if (data.key === 'ancestry') {
+      if (filterAncestry.includes(data.value)) {
+        const newAncestry = filterAncestry.filter((ancestry) => ancestry !== data.value);
+        setFilterAncestry(newAncestry);
+      } else {
+        setFilterAncestry([...filterAncestry, data.value]);
+      }
     }
   };
 
-  const filteredCharacter = characters.filter((character) => {
-    return character.name.toLowerCase().includes(filterName.toLowerCase());
-  });
+  const filteredCharacter = characters
+    .filter((character) => {
+      return character.name.toLowerCase().includes(filterName.toLowerCase());
+    })
+    .filter((character) => {
+      if (filterAncestry.length === 0) {
+        return true;
+      } else {
+        return filterAncestry.includes(character.ancestry);
+      }
+    });
+
+  const getAncestry = () => {
+    const ancestry = characters.map((character) => character.ancestry);
+    const uniqueAncestry = new Set(ancestry);
+    const uniques = [...uniqueAncestry];
+    return uniques;
+  };
 
   const renderCharacterDetail = (props) => {
     const routeId = parseInt(props.match.params.id);
@@ -57,6 +80,8 @@ const App = () => {
               handleFilter={handleFilter}
               filterName={filterName}
               filterHouse={filterHouse}
+              ancestry={getAncestry()}
+              filterAncestry={filterAncestry}
             />
             <CharacterList characters={filteredCharacter} filterName={filterName} />
           </Route>
