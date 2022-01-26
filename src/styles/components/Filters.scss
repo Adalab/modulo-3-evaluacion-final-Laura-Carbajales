@@ -1,17 +1,25 @@
 .filters {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  @media all and (min-width: 768px) {
+    width: 500px;
+  }
+
   &__name {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0px 0 5px 0;
+    flex-direction: column;
+    margin-bottom: 15px;
+    @media all and (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
   &__house {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 5px 0 20px 0;
+    flex-direction: column;
+    @media all and (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 }

@@ -8,6 +8,7 @@ import Slytherin from '../images/slytherin.png';
 
 const CharacterDetail = (props) => {
   const image = props.character.image ? props.character.image : DefaultImage;
+
   const getAlive = () => {
     if (props.character.alive && props.character.gender === 'female') {
       return 'Viva';
@@ -18,6 +19,12 @@ const CharacterDetail = (props) => {
     } else if (!props.character.alive && props.character.gender === 'male') {
       return 'Muerto';
     }
+  };
+  const getAliveIcon = () => {
+    if (props.character.alive) {
+      return <i className='fas fa-heartbeat'></i>;
+    }
+    return <i class='fas fa-skull-crossbones'></i>;
   };
   const getGender = () => {
     if (props.character.gender === 'female') {
@@ -39,6 +46,17 @@ const CharacterDetail = (props) => {
       return 'Fantasma';
     }
   };
+  const getSpeciesIcon = () => {
+    if (props.character.species === 'human') {
+      return <i className='fas fa-user-alt'></i>;
+    } else if (props.character.species === 'half-giant') {
+      return <i className='fas fa-user-alt-slash'></i>;
+    } else if (props.character.species === 'werewolf') {
+      return <i className='fab fa-wolf-pack-battalion'></i>;
+    } else if (props.character.species === 'ghost') {
+      return <i className='fas fa-ghost'></i>;
+    }
+  };
   const getShield = () => {
     if (props.character.house === 'Gryffindor') {
       return Gryffindor;
@@ -50,6 +68,7 @@ const CharacterDetail = (props) => {
       return Slytherin;
     }
   };
+
   const getAltName = () => {
     if (props.character.alternate.length > 0) {
       return (
@@ -61,8 +80,8 @@ const CharacterDetail = (props) => {
 
   return (
     <section className='detail'>
-      <Link to='/' exact className='detail__link'>
-        Volver
+      <Link to='/' className='detail__link'>
+        <i className='icon fas fa-times'></i>
       </Link>
       <article className='detail__article'>
         <img
@@ -79,8 +98,12 @@ const CharacterDetail = (props) => {
         />
         <div className='detail__article--container'>
           <h4 className='detail__article--title'>{props.character.name}</h4>
-          <p className='detail__article--text'>Estatus: {getAlive()}</p>
-          <p className='detail__article--text'>Especie: {getSpecies()}</p>
+          <p className='detail__article--text'>
+            Estatus: {getAlive()} {getAliveIcon()}
+          </p>
+          <p className='detail__article--text'>
+            Especie: {getSpecies()} {getSpeciesIcon()}
+          </p>
           <p className='detail__article--text'>Género: {getGender()}</p>
           <p className='detail__article--text'>Casa: {props.character.house}</p>
           {getAltName()}

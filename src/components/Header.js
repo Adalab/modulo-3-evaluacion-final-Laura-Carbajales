@@ -1,10 +1,15 @@
 import '../styles/components/Header.scss';
+import { Link } from 'react-router-dom';
 import Logo from '../images/logo.png';
 
 const Header = (props) => {
   return (
     <header className='header'>
-      <img className='header__img' src={Logo} title='Logo de la web' alt='Logo de la web' />
+      <Link to='/' className=''>
+        <img className='header__img' src={Logo} title='Logo de la web' alt='Logo de la web' />
+      </Link>
+      <p className='header__text'>Web for Wizards only</p>
+      <p className='header__subtext'>(Muggles out!)</p>
     </header>
   );
 };
