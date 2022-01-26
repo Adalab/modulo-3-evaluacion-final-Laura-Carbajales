@@ -6,6 +6,7 @@ import Filters from './Filters';
 import CharacterList from './CharacterList';
 import CharacterDetail from './CharacterDetail';
 import Header from './Header';
+import FilterName from './FilterName';
 
 const App = () => {
   const [characters, setcharacters] = useState([]);
@@ -47,7 +48,7 @@ const App = () => {
               filterName={filterName}
               filterHouse={filterHouse}
             />
-            <CharacterList characters={filteredCharacter} />
+            <CharacterList characters={filteredCharacter} filterName={filterName} />
           </Route>
           <Route path='/character/:id' render={renderCharacterDetail}></Route>
         </Switch>

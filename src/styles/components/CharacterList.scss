@@ -6,4 +6,13 @@
     justify-content: center;
     flex-wrap: wrap;
   }
+  &__text {
+    margin-top: 80px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid rgb(104, 13, 13);
+    border-radius: 5px;
+    padding: 20px;
+  }
 }

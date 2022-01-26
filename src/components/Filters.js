@@ -5,7 +5,7 @@ import FilterHouse from './FilterHouse';
 const Filters = (props) => {
   return (
     <section>
-      <form className='filters'>
+      <form className='filters' onSubmit={(ev) => ev.preventDefault()}>
         <div className='filters__name'>
           <FilterName handleFilter={props.handleFilter} filterName={props.filterName} />
         </div>
