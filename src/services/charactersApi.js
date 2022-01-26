@@ -11,6 +11,7 @@ const getApiData = (filterHouse) => {
           gender: character.gender,
           house: character.house,
           image: character.image,
+          alternate: character.alternate_names,
         };
       });
       return cleanData;

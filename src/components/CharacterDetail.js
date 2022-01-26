@@ -50,9 +50,16 @@ const CharacterDetail = (props) => {
       return Slytherin;
     }
   };
-  return props.character === undefined ? (
-    'Personaje no encontrado'
-  ) : (
+  const getAltName = () => {
+    if (props.character.alternate.length > 0) {
+      return (
+        <p className='detail__article--text'>Apodos: {props.character.alternate.join(', ')}.</p>
+      );
+    }
+    return null;
+  };
+
+  return (
     <section className='detail'>
       <Link to='/' exact className='detail__link'>
         Volver
@@ -76,6 +83,7 @@ const CharacterDetail = (props) => {
           <p className='detail__article--text'>Especie: {getSpecies()}</p>
           <p className='detail__article--text'>Género: {getGender()}</p>
           <p className='detail__article--text'>Casa: {props.character.house}</p>
+          {getAltName()}
         </div>
       </article>
     </section>
