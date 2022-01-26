@@ -1,12 +1,11 @@
 import '../styles/App.scss';
 import { useState, useEffect } from 'react';
-import { Route, Switch, useRouteMatch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import getApiData from '../services/charactersApi';
 import Filters from './Filters';
 import CharacterList from './CharacterList';
 import CharacterDetail from './CharacterDetail';
 import Header from './Header';
-import FilterName from './FilterName';
 
 const App = () => {
   const [characters, setcharacters] = useState([]);
@@ -70,6 +69,12 @@ const App = () => {
     return <CharacterDetail character={foundCharacter} />;
   };
 
+  const resetBtn = () => {
+    setFilterHouse('gryffindor');
+    setFilterName('');
+    setFilterAncestry([]);
+  };
+
   return (
     <div className='page'>
       <Header />
@@ -82,6 +87,7 @@ const App = () => {
               filterHouse={filterHouse}
               ancestry={getAncestry()}
               filterAncestry={filterAncestry}
+              resetBtn={resetBtn}
             />
             <CharacterList characters={filteredCharacter} filterName={filterName} />
           </Route>

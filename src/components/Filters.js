@@ -2,6 +2,7 @@ import '../styles/components/Filters.scss';
 import FilterName from './FilterName';
 import FilterHouse from './FilterHouse';
 import FilterAncestry from './FilterAncestry';
+import ResetBtn from './ResetBtn';
 
 const Filters = (props) => {
   return (
@@ -20,6 +21,7 @@ const Filters = (props) => {
             filterAncestry={props.filterAncestry}
           />
         </div>
+        <ResetBtn resetBtn={props.resetBtn} />
       </form>
     </section>
   );
