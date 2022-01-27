@@ -8,8 +8,8 @@ const Header = (props) => {
       <Link to='/' className=''>
         <img className='header__img' src={Logo} title='Logo de la web' alt='Logo de la web' />
       </Link>
-      <p className='header__text'>Web for Wizards only</p>
-      <p className='header__subtext'>(Muggles out!)</p>
+      <p className='header__text'>Web sólo para Magos y Brujas</p>
+      <p className='header__subtext'>¡Muggles fuera!</p>
     </header>
   );
 };
