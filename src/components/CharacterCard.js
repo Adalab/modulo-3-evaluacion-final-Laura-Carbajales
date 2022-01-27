@@ -16,7 +16,11 @@ const CharacterCard = (props) => {
   };
   const image = props.character.image ? props.character.image : DefaultImage;
   return (
-    <Link to={`/character/${props.character.id}`} className='card' href='#'>
+    <Link
+      to={`/house/${props.character.house}/character/${props.character.id}`}
+      className='card'
+      href='#'
+    >
       <article className='card__article'>
         <img
           className='card__article--img'

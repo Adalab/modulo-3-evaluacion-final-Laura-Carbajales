@@ -8,14 +8,14 @@ import CharacterDetail from './CharacterDetail';
 import Header from './Header';
 
 const App = () => {
-  const [characters, setcharacters] = useState([]);
+  const [characters, setCharacters] = useState([]);
   const [filterName, setFilterName] = useState('');
   const [filterHouse, setFilterHouse] = useState('gryffindor');
   const [filterAncestry, setFilterAncestry] = useState([]);
 
   useEffect(() => {
     getApiData(filterHouse).then((charactersData) => {
-      setcharacters(
+      setCharacters(
         charactersData.sort(function (a, b) {
           if (a.name > b.name) {
             return 1;
@@ -65,8 +65,14 @@ const App = () => {
 
   const renderCharacterDetail = (props) => {
     const routeId = parseInt(props.match.params.id);
+    const routerHouseId = props.match.params.houseId;
+    setFilterHouse(routerHouseId);
     const foundCharacter = characters.find((character) => character.id === routeId);
-    return <CharacterDetail character={foundCharacter} />;
+    if (foundCharacter !== undefined) {
+      return <CharacterDetail character={foundCharacter} />;
+    }
+
+    return <p className='notFoundText'>El personaje que buscas no existe</p>;
   };
 
   const resetBtn = () => {
@@ -91,7 +97,7 @@ const App = () => {
             />
             <CharacterList characters={filteredCharacter} filterName={filterName} />
           </Route>
-          <Route path='/character/:id' render={renderCharacterDetail}></Route>
+          <Route path='/house/:houseId/character/:id' render={renderCharacterDetail}></Route>
         </Switch>
       </main>
       <footer></footer>
