@@ -1,4 +1,5 @@
 import '../styles/components/FilterAncestry.scss';
+import translateAncestry from '../services/translateAncestry';
 
 const FilterAncestry = (props) => {
   const handleChange = (ev) => {
@@ -7,25 +8,7 @@ const FilterAncestry = (props) => {
       value: ev.target.value,
     });
   };
-  const translateAncestry = (ancestry) => {
-    switch (ancestry) {
-      case 'half-blood':
-        ancestry = 'Sangre Mixta';
-        break;
-      case 'muggleborn':
-        ancestry = 'Sangre Sucia';
-        break;
-      case 'pure-blood':
-        ancestry = 'Sangre Pura';
-        break;
-      case '':
-        ancestry = null;
-        break;
-      default:
-        ancestry = null;
-    }
-    return ancestry;
-  };
+
   const renderAncestry = () => {
     return props.ancestry.map((ancestry, index) => {
       const resultAncestry = translateAncestry(ancestry);

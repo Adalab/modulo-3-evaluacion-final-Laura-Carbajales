@@ -10,7 +10,7 @@ import Header from './Header';
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [filterName, setFilterName] = useState('');
-  const [filterHouse, setFilterHouse] = useState('gryffindor');
+  const [filterHouse, setFilterHouse] = useState('Gryffindor');
   const [filterAncestry, setFilterAncestry] = useState([]);
 
   useEffect(() => {
@@ -76,7 +76,7 @@ const App = () => {
   };
 
   const resetBtn = () => {
-    setFilterHouse('gryffindor');
+    setFilterHouse('Gryffindor');
     setFilterName('');
     setFilterAncestry([]);
   };
