@@ -7,7 +7,7 @@ const CharacterCard = (props) => {
   const image = props.character.image ? props.character.image : DefaultImage;
   return (
     <Link
-      to={`/house/${props.character.house}/character/${props.character.id}`}
+      to={`/character/${props.character.house}/${props.character.id}`}
       className='card'
       href='#'
     >

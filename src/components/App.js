@@ -1,12 +1,13 @@
 import '../styles/App.scss';
 import { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import getApiData from '../services/charactersApi';
 import Filters from './Filters';
 import CharacterList from './CharacterList';
 import CharacterDetail from './CharacterDetail';
 import Header from './Header';
 import Footer from './Footer';
+import { isValidDateValue } from '@testing-library/user-event/dist/utils';
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
@@ -64,16 +65,18 @@ const App = () => {
     return uniques;
   };
 
-  const renderCharacterDetail = (props) => {
-    const routeId = parseInt(props.match.params.id);
-    const routerHouseId = props.match.params.houseId;
-    setFilterHouse(routerHouseId);
-    const foundCharacter = characters.find((character) => character.id === routeId);
-    if (foundCharacter !== undefined) {
-      return <CharacterDetail character={foundCharacter} />;
-    }
+  const routeData = useRouteMatch('/character/:house/:id');
 
-    return <p className='notFoundText'>El personaje que buscas no existe</p>;
+  const getRouteCharacter = () => {
+    if (routeData !== null) {
+      const routeHouse = routeData.params.house;
+      if (routeHouse !== filterHouse) {
+        setFilterHouse(routeHouse);
+      } else {
+        const routeId = parseInt(routeData.params.id);
+        return characters.find((character) => character.id === routeId);
+      }
+    }
   };
 
   const resetBtn = () => {
@@ -98,7 +101,9 @@ const App = () => {
             />
             <CharacterList characters={filteredCharacter} filterName={filterName} />
           </Route>
-          <Route path='/house/:houseId/character/:id' render={renderCharacterDetail}></Route>
+          <Route path='/character/:house/:id'>
+            <CharacterDetail character={getRouteCharacter()} />
+          </Route>
         </Switch>
       </main>
       <Footer />

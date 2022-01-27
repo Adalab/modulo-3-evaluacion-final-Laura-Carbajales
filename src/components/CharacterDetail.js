@@ -9,7 +9,9 @@ import getSpecies from '../services/translateSpecies';
 import getAlive from '../services/translateAlive';
 
 const CharacterDetail = (props) => {
-  const image = props.character.image ? props.character.image : DefaultImage;
+  const getImage = () => {
+    return props.character.image ? props.character.image : DefaultImage;
+  };
 
   const getAliveIcon = () => {
     if (props.character.alive) {
@@ -56,40 +58,48 @@ const CharacterDetail = (props) => {
     return null;
   };
 
-  return (
-    <div className='containerDetail'>
-      <section className='detail'>
-        <Link to='/' className='detail__link'>
-          <i className='icon fas fa-times'></i>
-        </Link>
-        <article className='detail__article'>
-          <img
-            className='detail__article--shield'
-            src={getShield()}
-            alt={`Escudo de la casa ${props.character.house}`}
-            title={`Escudo de la casa ${props.character.house}`}
-          />
-          <img
-            className='detail__article--img'
-            src={image}
-            alt={`Foto de ${props.character.name}`}
-            title={`Foto de ${props.character.name}`}
-          />
-          <div className='detail__article--container'>
-            <h4 className='detail__article--title'>{props.character.name}</h4>
-            <p className='detail__article--text'>
-              Estatus: {getAlive(props.character)} {getAliveIcon()}
-            </p>
-            <p className='detail__article--text'>
-              Especie: {getSpecies(props.character)} {getSpeciesIcon()}
-            </p>
-            <p className='detail__article--text'>Género: {getGender()}</p>
-            <p className='detail__article--text'>Casa: {props.character.house}</p>
-            {getAltName()}
-          </div>
-        </article>
-      </section>
-    </div>
-  );
+  const renderCharacterDetail = () => {
+    return (
+      <div className='containerDetail'>
+        <section className='detail'>
+          <Link to='/' className='detail__link'>
+            <i className='icon fas fa-times'></i>
+          </Link>
+          <article className='detail__article'>
+            <img
+              className='detail__article--shield'
+              src={getShield()}
+              alt={`Escudo de la casa ${props.character.house}`}
+              title={`Escudo de la casa ${props.character.house}`}
+            />
+            <img
+              className='detail__article--img'
+              src={getImage()}
+              alt={`Foto de ${props.character.name}`}
+              title={`Foto de ${props.character.name}`}
+            />
+            <div className='detail__article--container'>
+              <h4 className='detail__article--title'>{props.character.name}</h4>
+              <p className='detail__article--text'>
+                Estatus: {getAlive(props.character)} {getAliveIcon()}
+              </p>
+              <p className='detail__article--text'>
+                Especie: {getSpecies(props.character)} {getSpeciesIcon()}
+              </p>
+              <p className='detail__article--text'>Género: {getGender()}</p>
+              <p className='detail__article--text'>Casa: {props.character.house}</p>
+              {getAltName()}
+            </div>
+          </article>
+        </section>
+      </div>
+    );
+  };
+
+  if (props.character === undefined) {
+    return <p className='notFoundText'>El personaje que buscas no existe</p>;
+  }
+
+  return renderCharacterDetail();
 };
 export default CharacterDetail;
