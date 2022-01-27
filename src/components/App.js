@@ -7,7 +7,6 @@ import CharacterList from './CharacterList';
 import CharacterDetail from './CharacterDetail';
 import Header from './Header';
 import Footer from './Footer';
-import { isValidDateValue } from '@testing-library/user-event/dist/utils';
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
