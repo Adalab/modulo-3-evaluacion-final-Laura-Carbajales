@@ -6,6 +6,7 @@ import Filters from './Filters';
 import CharacterList from './CharacterList';
 import CharacterDetail from './CharacterDetail';
 import Header from './Header';
+import Footer from './Footer';
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
@@ -100,7 +101,7 @@ const App = () => {
           <Route path='/house/:houseId/character/:id' render={renderCharacterDetail}></Route>
         </Switch>
       </main>
-      <footer></footer>
+      <Footer />
     </div>
   );
 };
