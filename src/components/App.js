@@ -13,6 +13,7 @@ const App = () => {
   const [filterName, setFilterName] = useState('');
   const [filterHouse, setFilterHouse] = useState('Gryffindor');
   const [filterAncestry, setFilterAncestry] = useState([]);
+  const [filterAlive, setFilterAlive] = useState('alive');
 
   useEffect(() => {
     getApiData(filterHouse).then((charactersData) => {
@@ -42,6 +43,8 @@ const App = () => {
       } else {
         setFilterAncestry([...filterAncestry, data.value]);
       }
+    } else if (data.key === 'alive') {
+      setFilterAlive(data.value);
     }
   };
 
@@ -54,6 +57,13 @@ const App = () => {
         return true;
       } else {
         return filterAncestry.includes(character.ancestry);
+      }
+    })
+    .filter((charater) => {
+      if (filterAlive === 'alive') {
+        return charater.alive === true;
+      } else {
+        return charater.alive === false;
       }
     });
 
@@ -97,6 +107,7 @@ const App = () => {
               ancestry={getAncestry()}
               filterAncestry={filterAncestry}
               resetBtn={resetBtn}
+              filterAlive={filterAlive}
             />
             <CharacterList characters={filteredCharacter} filterName={filterName} />
           </Route>

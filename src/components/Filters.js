@@ -3,6 +3,7 @@ import FilterName from './FilterName';
 import FilterHouse from './FilterHouse';
 import FilterAncestry from './FilterAncestry';
 import ResetBtn from './ResetBtn';
+import FilterAlive from './FilterAlive';
 
 const Filters = (props) => {
   return (
@@ -20,6 +21,9 @@ const Filters = (props) => {
             ancestry={props.ancestry}
             filterAncestry={props.filterAncestry}
           />
+          <div>
+            <FilterAlive handleFilter={props.handleFilter} filterAlive={props.filterAlive} />
+          </div>
         </div>
         <ResetBtn resetBtn={props.resetBtn} />
       </form>
